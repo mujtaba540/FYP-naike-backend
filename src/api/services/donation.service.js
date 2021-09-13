@@ -151,7 +151,11 @@ exports.id=async(id)=>{
     try{
         await db.authenticate();
         var result=await models.Donation.findOne({
-            where:{donationID:id}
+            where:{donationID:id},
+            include:[{
+                model:models.UserDetails,
+                as:"user"
+            }]
         })
         if(result==null){return {resposne:false,error:new APIError({
                     message:"NOT FOUND",
@@ -169,7 +173,10 @@ exports.id=async(id)=>{
 exports.all=async()=>{
     try{
         await db.authenticate();
-        var result=await models.Donation.findAll()
+        var result=await models.Donation.findAll({include:[{
+            model:models.UserDetails,
+            as:"user"
+        }]})
         if(result!==null){
             return {
                 response:true,
@@ -199,3 +206,40 @@ exports.count=async()=>{
         return {resposne:false,error:new APIError(httpStatus.INTERNAL_SERVER_ERROR)}
     }
 }
+
+exports.id_guest=async(id)=>{
+    try{
+        await db.authenticate();
+        var result=await models.Donation.findOne({
+            where:{donationID:id}
+        })
+        if(result==null){return {resposne:false,error:new APIError({
+                    message:"NOT FOUND",
+                    status:httpStatus.NOT_FOUND})
+                }    
+        }     
+        return {
+            response:true,
+            data:result
+        }
+    }catch(error){
+        return {response:false,error:new APIError(httpStatus.INTERNAL_SERVER_ERROR)}
+    }
+}
+exports.all_guest=async()=>{
+    try{
+        await db.authenticate();
+        var result=await models.Donation.findAll()
+        if(result!==null){
+            return {
+                response:true,
+                data:result
+            }    
+        }else{
+            return {resposne:false,error:new APIError(httpStatus.NOT_FOUND)}
+        }
+    }catch(error){
+        return {resposne:false,error:new APIError(httpStatus.INTERNAL_SERVER_ERROR)}
+    }
+}
+

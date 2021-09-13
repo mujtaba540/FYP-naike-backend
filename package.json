@@ -89,6 +89,7 @@
     "passport": "^0.4.0",
     "passport-http-bearer": "^1.0.1",
     "passport-jwt": "4.0.0",
+    "pg": "^8.7.1",
     "pm2": "^5.1.0",
     "pug": "^3.0.1",
     "sequelize": "^6.6.5",
@@ -112,5 +113,4 @@
     "sinon-chai": "^3.0.0",
     "supertest": "^6.1.3"
   }
-  
 }

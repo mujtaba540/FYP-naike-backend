@@ -133,3 +133,38 @@ exports.count = async(req,res,next)=>{
     return next(error)
   }
   }
+  exports.all_guest = async(req,res,next)=>{
+    try{
+        var result=await donation.all_guest()
+        if(result.response){
+            res.status(httpStatus.OK).json({
+                code:httpStatus.OK,
+                message:"Success",
+                data:result.data
+            })
+        }else{
+          return next(result.error)
+        }
+  }catch(error){
+    return next(error)
+  }
+  },
+  
+  exports.id_guest=async(req,res,next)=>{
+    try{
+      var id=req.params.id
+      var result=await donation.id_guest(id)
+      if(result.response){
+          res.status(httpStatus.OK).json({
+              code:httpStatus.OK,
+              message:"Success",
+              data:result.data
+          })
+      }else{
+        return next(result.error)
+      }
+  }catch(error){
+  return next(error)
+  }
+  }
+

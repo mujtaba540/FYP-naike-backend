@@ -10,7 +10,6 @@ const ranksRoutes=require('./ranks.route')
 const needRoutes=require('./need.route')
 const donationRoutes=require('./donation.route')
 const guestRoutes=require('./guest.route')
-
 const router = express.Router();
 
 /**
@@ -22,7 +21,6 @@ router.get('/status', (req, res) => res.send('OK'));
  * GET v1/docs
  */
 router.use('/docs', express.static('docs'));
-
 router.use('/user', userRoutes);
 router.use('/auth', authRoutes);
 router.use('/employee', empRoutes);

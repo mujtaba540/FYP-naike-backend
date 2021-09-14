@@ -45,6 +45,9 @@ passport.use('facebook', strategies.facebook);
 passport.use('google', strategies.google);
 
 // mount api v1 routes
+app.get('/',(req,res)=>{
+    res.send("home")
+})
 app.use('/v1', routes);
 
 // if error is not an instanceOf APIError, convert it.

@@ -34,6 +34,30 @@ module.exports = function(sequelize, DataTypes) {
     maxLimit: {
       type: DataTypes.BIGINT,
       allowNull: true
+    },
+    createdOn: {
+      type: DataTypes.TIME,
+      allowNull: true
+    },
+    createdBy: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    modifiedOn: {
+      type: DataTypes.TIME,
+      allowNull: true
+    },
+    modifiedBy: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    deletedOn: {
+      type: DataTypes.TIME,
+      allowNull: true
+    },
+    deletedBy: {
+      type: DataTypes.TEXT,
+      allowNull: true
     }
   }, {
     sequelize,

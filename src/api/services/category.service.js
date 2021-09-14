@@ -13,10 +13,6 @@ async function createDetails(name,Data){
             Data.createdBy=name
             Data.isActive=true
             Data.isDelete=false
-            Data.status="active"
-            Data.needCount=1,
-            Data.resolveCount=0
-            Data.currentQuantity=Data.initialQuantity
             return Data
         }else{
             return false;
@@ -63,26 +59,9 @@ async function checkLimit(needID,userID,subcategoryID,initialQuantity,flag){
 
 exports.create = async (Data) => {
     try {
-        await db.authenticate()
-        var username=await models.UserDetails.findByPk(Data.userID,{attributes:["firstName"]})
-        if(Data.donationID!=null){
-            var recheck=await models.Donation.findByPk(Data.donationID,{where:{userID:Data.userID}})
-            if(recheck!=null){
-                return {
-                    response:false,
-                    error:new APIError({
-                        message:"Donation Raiser Can Not Raise Need",
-                        status:httpStatus.BAD_REQUEST
-                    })
-                }
-            }
-        }
-        // var subCategoryLimit=await checkLimit(Data.needID,Data.userID,Data.subcategoryID,Data.initialQuantity,true)
-        // if(!subCategoryLimit.response){
-        //     return {response:false,error:subCategoryLimit.error}
-        // }
-        var obj=await createDetails(username.firstName,Data)
-        await models.Need.create(obj)
+        await db.authenticate()   
+        var obj=await createDetails(Data)
+        await models.Categories.create(obj)
         return {
             response:true
         }
@@ -94,7 +73,7 @@ exports.create = async (Data) => {
     }
   };
 
- exports.update=async(Data,username)=>{
+ exports.update=async(Data)=>{
     try{
         await db.authenticate();
         var result=await models.Need.findOne({where:{needID:Data.needID}})
@@ -157,12 +136,8 @@ exports.create = async (Data) => {
 exports.id=async(id)=>{
     try{
         await db.authenticate();
-        var result=await models.Need.findOne({
-            where:{needID:id},
-            include:[{
-                model:models.UserDetails,
-                as:"user"
-            }]
+        var result=await models.Categories.findOne({
+            where:{categoryID:id}
         })
         if(result==null){return {resposne:false,error:new APIError({
                     message:"NOT FOUND",
@@ -180,10 +155,7 @@ exports.id=async(id)=>{
 exports.all=async()=>{
     try{
         await db.authenticate();
-        var result=await models.Need.findAll({ include:[{
-            model:models.UserDetails,
-            as:"user"
-        }]})
+        var result=await models.Categories.findAll()
         if(result!==null){
             return {
                 response:true,
@@ -214,38 +186,3 @@ exports.count=async()=>{
     }
 }
 
-exports.id_guest=async(id)=>{
-    try{
-        await db.authenticate();
-        var result=await models.Need.findOne({
-            where:{needID:id}
-        })
-        if(result==null){return {resposne:false,error:new APIError({
-                    message:"NOT FOUND",
-                    status:httpStatus.NOT_FOUND})
-                }    
-        }     
-        return {
-            response:true,
-            data:result
-        }
-    }catch(error){
-        return {response:false,error:new APIError(httpStatus.INTERNAL_SERVER_ERROR)}
-    }
-}
-exports.all_guest=async()=>{
-    try{
-        await db.authenticate();
-        var result=await models.Need.findAll()
-        if(result!==null){
-            return {
-                response:true,
-                data:result
-            }    
-        }else{
-            return {resposne:false,error:new APIError(httpStatus.NOT_FOUND)}
-        }
-    }catch(error){
-        return {resposne:false,error:new APIError(httpStatus.INTERNAL_SERVER_ERROR)}
-    }
-}

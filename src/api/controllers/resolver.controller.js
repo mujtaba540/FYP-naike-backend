@@ -1,5 +1,5 @@
 const httpStatus = require('http-status');
-const donation = require('../services/donation.service');
+const resolver = require('../services/resolver.service');
 const APIError = require('../errors/api-error');
 
 
@@ -12,7 +12,7 @@ exports.create = async (req, res, next) => {
       status:httpStatus.BAD_REQUEST,
       message:"BAD REQUEST"
     }))
-    var result=await donation.create(Data);
+    var result=await resolver.create(Data);
     if(result.response){
         res.status(httpStatus.CREATED);
         res.json({

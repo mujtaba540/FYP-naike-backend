@@ -1,5 +1,5 @@
 const httpStatus = require('http-status');
-const donation = require('../services/donation.service');
+const subcategory = require('../services/subcategory.service');
 const APIError = require('../errors/api-error');
 
 
@@ -12,7 +12,7 @@ exports.create = async (req, res, next) => {
       status:httpStatus.BAD_REQUEST,
       message:"BAD REQUEST"
     }))
-    var result=await donation.create(Data);
+    var result=await subcategory.create(Data);
     if(result.response){
         res.status(httpStatus.CREATED);
         res.json({
@@ -36,8 +36,8 @@ exports.update = async (req, res, next) =>{
           status:httpStatus.BAD_REQUEST,
           message:"BAD REQUEST"
         }))
-        Data.donationID=req.params.id
-            var result=await donation.update(Data)
+        Data.subcategoryID=req.params.id
+            var result=await subcategory.update(Data)
             if(result.response){
                 res.status(httpStatus.OK);
                 res.json({
@@ -66,11 +66,11 @@ exports.delete = async (req, res, next) => {
   try{
       var username=req.username
         var id=req.params.id
-            var result=await donation.delete(id,username)
+            var result=await subcategory.delete(id,username)
             if(result.response){
                 res.status(httpStatus.OK).json({
                    code:httpStatus.OK,
-                    message:"donation Deleted"
+                    message:"subcategory Deleted"
                 })
             }else{
               return next(result.error)
@@ -83,7 +83,7 @@ exports.delete = async (req, res, next) => {
 
 exports.all = async(req,res,next)=>{
   try{
-      var result=await donation.all()
+      var result=await subcategory.all()
       if(result.response){
           res.status(httpStatus.OK).json({
               code:httpStatus.OK,
@@ -101,7 +101,7 @@ exports.all = async(req,res,next)=>{
 exports.id=async(req,res,next)=>{
   try{
     var id=req.params.id
-    var result=await donation.id(id)
+    var result=await subcategory.id(id)
     if(result.response){
         res.status(httpStatus.OK).json({
             code:httpStatus.OK,
@@ -118,7 +118,7 @@ return next(error)
 
 exports.count = async(req,res,next)=>{
     try{
-        var result=await donation.count()
+        var result=await subcategory.count()
         if(result.response){
             res.status(httpStatus.OK).json({
                 code:httpStatus.OK,
@@ -134,7 +134,7 @@ exports.count = async(req,res,next)=>{
   }
   exports.all_guest = async(req,res,next)=>{
     try{
-        var result=await donation.all_guest()
+        var result=await subcategory.all_guest()
         if(result.response){
             res.status(httpStatus.OK).json({
                 code:httpStatus.OK,
@@ -152,7 +152,7 @@ exports.count = async(req,res,next)=>{
   exports.id_guest=async(req,res,next)=>{
     try{
       var id=req.params.id
-      var result=await donation.id_guest(id)
+      var result=await subcategory.id_guest(id)
       if(result.response){
           res.status(httpStatus.OK).json({
               code:httpStatus.OK,

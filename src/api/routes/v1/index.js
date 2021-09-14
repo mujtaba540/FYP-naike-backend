@@ -10,6 +10,10 @@ const ranksRoutes=require('./ranks.route')
 const needRoutes=require('./need.route')
 const donationRoutes=require('./donation.route')
 const guestRoutes=require('./guest.route')
+const categoryRoutes=require('./category.route')
+const subcategoryRoutes=require('./subcategory.route')
+
+
 const router = express.Router();
 
 /**
@@ -32,6 +36,8 @@ router.use('/salary',salaryRoutes)
 router.use('/need',needRoutes)
 router.use('/donation',donationRoutes)
 router.use('/guest',guestRoutes)
+router.use('/category',categoryRoutes)
+router.use('/subcategory',subcategoryRoutes)
 
 
 module.exports = router;

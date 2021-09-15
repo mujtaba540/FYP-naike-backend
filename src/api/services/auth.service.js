@@ -88,7 +88,9 @@ module.exports={
       }catch(error){
         return{
           response:false,
-          error:new APIError(httpStatus.INTERNAL_SERVER_ERROR)
+          error:new APIError({
+            message:error.message||"Internal Server Error",
+            status:httpStatus.INTERNAL_SERVER_ERROR})
         }
       }
     }

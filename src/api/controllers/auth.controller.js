@@ -31,7 +31,7 @@ exports.register = async (req, res, next) => {
       res.status(httpStatus.CREATED);
       return res.json({ code:httpStatus.CREATED, message:"User Registered" });
     }else{
-      return next(result.errors)
+      return next(result.error)
     }
   } catch (error) {
     return next(error);
@@ -47,7 +47,7 @@ exports.login = async (req, res, next) => {
 
     const { user,accessToken } = await authService.findAndGenerateToken(req.body);
     return res.json({ 
-      token:accessToken, User: user
+      token:accessToken, data: user
      });
   } catch (error) {
     return next(error);

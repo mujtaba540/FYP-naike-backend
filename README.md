@@ -71,7 +71,7 @@ AllNeeds: GET: http://192.168.18.118:3000/v1/guest/need
 
 needByID: GET: http://192.168.18.118:3000/v1/guest/need/:id 
 
-NeedCount: GET: http://192.168.18.118:3000/v1/needcount
+NeedCount: GET: http://192.168.18.118:3000/v1/guest/needcount
 
 AllDonations: GET: http://192.168.18.118:3000/v1/guest/donation 
 

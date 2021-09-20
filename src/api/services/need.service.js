@@ -117,7 +117,7 @@ exports.create = async (Data) => {
                }
                Data.initialQuantity=newInitialQuantity
                var username=await models.UserDetails.findByPk(Data.userID,{attributes:["firstName"]})
-               var obj=await modifiedDetails(username,Data)    
+               var obj=await modifiedDetails(username.firstName,Data)    
                await models.Need.update(obj,{where :{needID:Data.needID}})
                return {response:true}  
         }
@@ -158,7 +158,7 @@ exports.id=async(id)=>{
     try{
         await db.authenticate();
         var result=await models.Need.findOne({
-            where:{needID:id},
+            where:{needID:id,isActive:true},
             include:[{
                 model:models.UserDetails,
                 as:"user"
@@ -180,7 +180,7 @@ exports.id=async(id)=>{
 exports.all=async()=>{
     try{
         await db.authenticate();
-        var result=await models.Need.findAll({ include:[{
+        var result=await models.Need.findAll({where:{isActive:true}, include:[{
             model:models.UserDetails,
             as:"user"
         }]})
@@ -200,7 +200,7 @@ exports.all=async()=>{
 exports.count=async()=>{
     try{
         await db.authenticate();
-        var result=await models.Need.findAndCountAll()
+        var result=await models.Need.findAndCountAll({where:{isActive:true}})
         if(result!==null){
             return {
                 response:true,
@@ -218,7 +218,7 @@ exports.id_guest=async(id)=>{
     try{
         await db.authenticate();
         var result=await models.Need.findOne({
-            where:{needID:id}
+            where:{needID:id,isActive:true}
         })
         if(result==null){return {resposne:false,error:new APIError({
                     message:"NOT FOUND",
@@ -236,7 +236,7 @@ exports.id_guest=async(id)=>{
 exports.all_guest=async()=>{
     try{
         await db.authenticate();
-        var result=await models.Need.findAll()
+        var result=await models.Need.findAll({where:{isActive:true}})
         if(result!==null){
             return {
                 response:true,
@@ -247,5 +247,29 @@ exports.all_guest=async()=>{
         }
     }catch(error){
         return {resposne:false,error:new APIError(httpStatus.INTERNAL_SERVER_ERROR)}
+    }
+}
+
+exports.user_id=async(id)=>{
+    try{
+        await db.authenticate();
+        var result=await models.Need.findOne({
+            where:{userID:id,isActive:true},
+            include:[{
+                model:models.UserDetails,
+                as:"user"
+            }]
+        })
+        if(result==null){return {resposne:false,error:new APIError({
+                    message:"NOT FOUND",
+                    status:httpStatus.NOT_FOUND})
+                }    
+        }     
+        return {
+            response:true,
+            data:result
+        }
+    }catch(error){
+        return {response:false,error:new APIError(httpStatus.INTERNAL_SERVER_ERROR)}
     }
 }

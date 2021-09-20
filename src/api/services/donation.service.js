@@ -92,27 +92,27 @@ exports.create = async (Data) => {
                 status:httpStatus.NOT_FOUND
             })}
         }else{
-           var subCategoryLimit=await checkLimit(Data.donationID,Data.userID,Data.subcategoryID,Data.initialQuantity,false)
-           if(subCategoryLimit.response){
-               var newInitialQuantity=Data.initialQuantity
-               var oldCurrent=await models.Donation.findOne({where:{donationID:Data.donationID}})
-               var oldInitialQuantity=await models.Donation.findOne({where:{donationID:Data.donationID}})
-               if(newInitialQuantity>oldInitialQuantity.initialQuantity){
-                   var difference=newInitialQuantity-oldInitialQuantity.initialQuantity
-                   Data.currentQuantity=parseInt(oldCurrent.currentQuantity)+difference
-               }else{
-                   if(newInitialQuantity<=oldCurrent.currentQuantity){
-                       Data.currentQuantity=newInitialQuantity
-                   }
-               }
+        //    var subCategoryLimit=await checkLimit(Data.donationID,Data.userID,Data.subcategoryID,Data.initialQuantity,false)
+        //    if(subCategoryLimit.response){
+        //        var newInitialQuantity=Data.initialQuantity
+        //        var oldCurrent=await models.Donation.findOne({where:{donationID:Data.donationID}})
+        //        var oldInitialQuantity=await models.Donation.findOne({where:{donationID:Data.donationID}})
+        //        if(newInitialQuantity>oldInitialQuantity.initialQuantity){
+        //            var difference=newInitialQuantity-oldInitialQuantity.initialQuantity
+        //            Data.currentQuantity=parseInt(oldCurrent.currentQuantity)+difference
+        //        }else{
+        //            if(newInitialQuantity<=oldCurrent.currentQuantity){
+        //                Data.currentQuantity=newInitialQuantity
+        //            }
+        //        }
                var username=await models.UserDetails.findByPk(Data.userID,{attributes:["firstName"]})
-               Data.initialQuantity=newInitialQuantity
+            //    Data.initialQuantity=newInitialQuantity
                var obj=await modifiedDetails(username.firstName,Data)    
                await models.Donation.update(obj,{where :{donationID:Data.donationID}})
                return {response:true}  
-           }else{
-               return {response:false,error:subCategoryLimit.error}
-           }
+        //    }else{
+        //        return {response:false,error:subCategoryLimit.error}
+        //    }
         }
         
     }catch(error){
@@ -151,7 +151,7 @@ exports.id=async(id)=>{
     try{
         await db.authenticate();
         var result=await models.Donation.findOne({
-            where:{donationID:id},
+            where:{donationID:id,isActive:true},
             include:[{
                 model:models.UserDetails,
                 as:"user"
@@ -173,7 +173,7 @@ exports.id=async(id)=>{
 exports.all=async()=>{
     try{
         await db.authenticate();
-        var result=await models.Donation.findAll({include:[{
+        var result=await models.Donation.findAll({where:{isActive:true},include:[{
             model:models.UserDetails,
             as:"user"
         }]})
@@ -193,7 +193,7 @@ exports.all=async()=>{
 exports.count=async()=>{
     try{
         await db.authenticate();
-        var result=await models.Donation.findAndCountAll()
+        var result=await models.Donation.findAndCountAll({where:{isActive:true}})
         if(result!==null){
             return {
                 response:true,
@@ -211,7 +211,7 @@ exports.id_guest=async(id)=>{
     try{
         await db.authenticate();
         var result=await models.Donation.findOne({
-            where:{donationID:id}
+            where:{donationID:id,isActive:true}
         })
         if(result==null){return {resposne:false,error:new APIError({
                     message:"NOT FOUND",
@@ -229,7 +229,7 @@ exports.id_guest=async(id)=>{
 exports.all_guest=async()=>{
     try{
         await db.authenticate();
-        var result=await models.Donation.findAll()
+        var result=await models.Donation.findAll({where:{isActive:true}})
         if(result!==null){
             return {
                 response:true,
@@ -242,4 +242,26 @@ exports.all_guest=async()=>{
         return {resposne:false,error:new APIError(httpStatus.INTERNAL_SERVER_ERROR)}
     }
 }
-
+exports.user_id=async(id)=>{
+    try{
+        await db.authenticate();
+        var result=await models.Donation.findOne({
+            where:{userID:id,isActive:true},
+            include:[{
+                model:models.UserDetails,
+                as:"user"
+            }]
+        })
+        if(result==null){return {resposne:false,error:new APIError({
+                    message:"NOT FOUND",
+                    status:httpStatus.NOT_FOUND})
+                }    
+        }     
+        return {
+            response:true,
+            data:result
+        }
+    }catch(error){
+        return {response:false,error:new APIError(httpStatus.INTERNAL_SERVER_ERROR)}
+    }
+}

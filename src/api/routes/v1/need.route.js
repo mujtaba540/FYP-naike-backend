@@ -23,6 +23,7 @@ router
   // .post(authorize(ADMIN), validate(createUser), controller.emp_create);
   .post(authenticate(),validate(createNeed),controller.create);
 
+
 // router
 //   .route('/profile')
 //   .get(authorize(), controller.loggedIn);
@@ -37,4 +38,8 @@ router
   .patch(authenticate(), controller.delete);
 
 
+  router
+  .route('/user/:id')
+
+   .get(authenticate(), controller.user_id)
 module.exports = router;

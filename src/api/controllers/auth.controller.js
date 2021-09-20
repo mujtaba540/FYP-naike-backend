@@ -47,6 +47,8 @@ exports.login = async (req, res, next) => {
 
     const { user,accessToken } = await authService.findAndGenerateToken(req.body);
     return res.json({ 
+      code:httpStatus.OK,
+      "message":"Success",
       token:accessToken, data: user
      });
   } catch (error) {

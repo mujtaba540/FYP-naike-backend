@@ -15,7 +15,7 @@ async function passwordMatches(Password,hashed) {
 
 async function token(rolename,username) {
   const payload = {
-    exp: moment().add(jwtExpirationInterval, 'm').unix(),
+    exp: moment().add(jwtExpirationInterval, 'd').unix(),
     iat: moment().unix(),
     RoleName:rolename,
     UserName:username
@@ -23,7 +23,7 @@ async function token(rolename,username) {
   var access_token=jwt.sign(payload, jwtSecret);
   return {
     access_token:access_token,
-    exp: moment().add(jwtExpirationInterval, 'minutes').unix(),
+    exp: moment().add(jwtExpirationInterval, 'd').unix(),
     iat: moment().unix(),
   }
 }

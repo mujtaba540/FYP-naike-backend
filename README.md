@@ -15,8 +15,6 @@ create: POST: http://192.168.18.118:3000/v1/category/
 
 getAll: GET: http://192.168.18.118:3000/v1/category/
 
-byID: GET: http://192.168.18.118:3000/v1/category/:id
-
 update: PUT: http://192.168.18.118:3000/v1/category/:id
 
 delete: PATCH: http://192.168.18.118:3000/v1/category/:id
@@ -29,8 +27,6 @@ getCount: GET: http://192.168.18.118:3000/v1/subcategory/count
 create: POST: http://192.168.18.118:3000/v1/subcategory/ 
 
 getAll: GET: http://192.168.18.118:3000/v1/subcategory/
-
-byID: GET: http://192.168.18.118:3000/v1/subcategory/:id
 
 update: PUT: http://192.168.18.118:3000/v1/subcategory/:id
 
@@ -51,6 +47,8 @@ update: PUT: http://192.168.18.118:3000/v1/need/:id
 
 delete: PATCH: http://192.168.18.118:3000/v1/need/:id
 
+user_Needs: get: http://192.168.18.118:3000/v1/need/user/94
+
 Donation Routes:
 
 getCount: GET: http://192.168.18.118:3000/v1/donation/count 
@@ -64,6 +62,8 @@ byID: GET: http://192.168.18.118:3000/v1/donation/:id
 update: PUT: http://192.168.18.118:3000/v1/donation/:id
 
 delete: PATCH: http://192.168.18.118:3000/v1/donation/:id
+
+user_Donations: get: http://192.168.18.118:3000/v1/donation/user/94
 
 Guest Routes:
 

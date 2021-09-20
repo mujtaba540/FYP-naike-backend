@@ -166,5 +166,24 @@ exports.all_guest = async(req,res,next)=>{
   }catch(error){
   return next(error)
   }
+  },
+
+  exports.user_id=async(req,res,next)=>{
+    try{
+      var id=req.params.id
+      var result=await need.user_id(id)
+      if(result.response){
+          res.status(httpStatus.OK).json({
+              code:httpStatus.OK,
+              message:"Success",
+              data:result.data
+          })
+      }else{
+        return next(result.error)
+      }
+  }catch(error){
+  return next(error)
   }
+  }
+  
   

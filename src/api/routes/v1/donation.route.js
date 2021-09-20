@@ -36,5 +36,9 @@ router
   .put(authenticate(),controller.update)
   .patch(authenticate(), controller.delete);
 
+  router
+  .route('/user/:id')
+
+   .get(authenticate(), controller.user_id)
 
 module.exports = router;

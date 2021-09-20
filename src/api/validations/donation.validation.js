@@ -18,11 +18,10 @@ module.exports = {
   createDonation: {
     body: {
         userID:Joi.number().required(),
-        subcategoryID:Joi.number().required(),
+        subCategoryID:Joi.number().required(),
         longitude:Joi.number().required(),
         latitude:Joi.number().required(),
         description:Joi.string().required(),
-        deadline:Joi.date().required(),
         initialQuantity:Joi.number().required(),
         deliveryType:Joi.string().valid('Pick Up','Drop Off','Pick Up and Drop Off').required(),
         title:Joi.string().required()  

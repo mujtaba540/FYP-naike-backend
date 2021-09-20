@@ -17,7 +17,7 @@ module.exports = {
   createNeed: {
     body: {
         userID:Joi.number().required().positive(),
-        subcategoryID:Joi.number().required(),
+        subCategoryID:Joi.number().required(),
         donationID:Joi.number().optional().allow('',null),
         longitude:Joi.number().required(),
         latitude:Joi.number().required(),

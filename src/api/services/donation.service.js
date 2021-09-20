@@ -38,18 +38,18 @@ async function modifiedDetails(name,Data){
         return false;
     }
 }
-async function checkLimit(donationID,userID,subcategoryID,initialQuantity,flag){
+async function checkLimit(donationID,userID,subCategoryID,initialQuantity,flag){
     var sumLimit=0
     if(flag){
-        var maxlimit=await models.Donation.findAll({where:{userID:userID,subCategoryID:subcategoryID,isActive:true},attributes:["initialQuantity"]})
+        var maxlimit=await models.Donation.findAll({where:{userID:userID,subCategoryID:subCategoryID,isActive:true},attributes:["initialQuantity"]})
     }else{
-        var maxlimit=await models.Donation.findAll({where:{donationID:{[Op.ne]:donationID},userID:userID,subCategoryID:subcategoryID,isActive:true},attributes:["initialQuantity"]})
+        var maxlimit=await models.Donation.findAll({where:{donationID:{[Op.ne]:donationID},userID:userID,subCategoryID:subCategoryID,isActive:true},attributes:["initialQuantity"]})
     }
     for(var i=0;i<maxlimit.length;i++){
         sumLimit+=parseInt(maxlimit[i].initialQuantity)
     }
     sumLimit+=parseInt(initialQuantity)
-    var subCatLimit=await models.SubCategories.findByPk(subcategoryID,{attributes:["maxLimit"]})
+    var subCatLimit=await models.SubCategories.findByPk(subCategoryID,{attributes:["maxLimit"]})
     
     if(sumLimit>parseInt(subCatLimit.maxLimit)){
         return {resposne:false,error:new APIError({
@@ -65,10 +65,10 @@ exports.create = async (Data) => {
     try {
         await db.authenticate()
         var username=await models.UserDetails.findByPk(Data.userID,{attributes:["firstName"]})
-        var subCategoryLimit=await checkLimit(Data.donationID,Data.userID,Data.subcategoryID,Data.initialQuantity,true)
-        if(!subCategoryLimit.response){
-            return {response:false,error:subCategoryLimit.error}
-        }
+        // var subCategoryLimit=await checkLimit(Data.donationID,Data.userID,Data.subCategoryID,Data.initialQuantity,true)
+        // if(!subCategoryLimit.response){
+        //     return {response:false,error:subCategoryLimit.error}
+        // }
         var obj=await createDetails(username.firstName,Data)
         await models.Donation.create(obj)
         return {
@@ -92,7 +92,7 @@ exports.create = async (Data) => {
                 status:httpStatus.NOT_FOUND
             })}
         }else{
-        //    var subCategoryLimit=await checkLimit(Data.donationID,Data.userID,Data.subcategoryID,Data.initialQuantity,false)
+        //    var subCategoryLimit=await checkLimit(Data.donationID,Data.userID,Data.subCategoryID,Data.initialQuantity,false)
         //    if(subCategoryLimit.response){
         //        var newInitialQuantity=Data.initialQuantity
         //        var oldCurrent=await models.Donation.findOne({where:{donationID:Data.donationID}})

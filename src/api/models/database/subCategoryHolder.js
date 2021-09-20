@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true,
       references: {
         model: 'SubCategories',
-        key: 'subID'
+        key: 'subCategoryID'
       }
     },
     needID: {

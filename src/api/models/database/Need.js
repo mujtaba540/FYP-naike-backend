@@ -15,12 +15,12 @@ module.exports = function(sequelize, DataTypes) {
         key: 'userID'
       }
     },
-    subcategoryID: {
+    subCategoryID: {
       type: DataTypes.BIGINT,
       allowNull: true,
       references: {
         model: 'SubCategories',
-        key: 'subID'
+        key: 'subCategoryID'
       }
     },
     donationID: {

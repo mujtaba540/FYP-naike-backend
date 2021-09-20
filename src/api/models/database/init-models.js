@@ -46,8 +46,8 @@ function initModels(sequelize) {
   Role.hasMany(rolePrevilege, { as: "rolePrevileges", foreignKey: "roleID"});
   Donation.belongsTo(SubCategories, { as: "subCategory", foreignKey: "subCategoryID"});
   SubCategories.hasMany(Donation, { as: "Donations", foreignKey: "subCategoryID"});
-  Need.belongsTo(SubCategories, { as: "subcategory", foreignKey: "subcategoryID"});
-  SubCategories.hasMany(Need, { as: "Needs", foreignKey: "subcategoryID"});
+  Need.belongsTo(SubCategories, { as: "subCategory", foreignKey: "subCategoryID"});
+  SubCategories.hasMany(Need, { as: "Needs", foreignKey: "subCategoryID"});
   subCategoryHolder.belongsTo(SubCategories, { as: "subCategory", foreignKey: "subCategoryID"});
   SubCategories.hasMany(subCategoryHolder, { as: "subCategoryHolders", foreignKey: "subCategoryID"});
   Address.belongsTo(UserDetails, { as: "user", foreignKey: "userID"});

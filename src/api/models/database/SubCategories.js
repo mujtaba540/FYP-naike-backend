@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('SubCategories', {
-    subID: {
+    subCategoryID: {
       autoIncrement: true,
       type: DataTypes.BIGINT,
       allowNull: false,
@@ -69,7 +69,7 @@ module.exports = function(sequelize, DataTypes) {
         name: "subID",
         unique: true,
         fields: [
-          { name: "subID" },
+          { name: "subCategoryID" },
         ]
       },
     ]

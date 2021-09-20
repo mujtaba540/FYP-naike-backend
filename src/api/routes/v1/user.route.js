@@ -2,13 +2,14 @@ const express = require('express');
 const validate = require('express-validation');
 const controller = require('../../controllers/user.controller');
 const multer=require('../../middlewares/multer.middleware')
-const { authorize, ADMIN, LOGGED_USER } = require('../../middlewares/auth');
+const { authenticate,authorize, ADMIN, LOGGED_USER } = require('../../middlewares/auth');
 const {
   listUsers,
   createUser,
   replaceUser,
   updateUser,
 } = require('../../validations/user.validation');
+// const { authenticate } = require('../../../config/config');
 
 const router = express.Router();
 
@@ -29,7 +30,7 @@ router
 router
   .route('/:id')
 
-   .get(authorize(['admin']), controller.id)
+   .get(authenticate(),controller.id)
 //   .put(authorize(LOGGED_USER), validate(replaceUser), controller.replace)
 
   .put(authorize(['admin']),multer.single('PhotoPath'), controller.update)

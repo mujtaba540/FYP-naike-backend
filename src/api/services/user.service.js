@@ -98,8 +98,8 @@ exports.create = async (Data,username) => {
 exports.id=async(id)=>{
     try{
         await db.authenticate();
-        var result=await models.user.findOne({
-            where:{UserID:id}
+        var result=await models.UserDetails.findOne({
+            where:{userID:id}
         })
         if(result==null){return {resposne:false,error:new APIError({
                     message:"NOT FOUND",

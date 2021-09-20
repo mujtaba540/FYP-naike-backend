@@ -79,3 +79,8 @@ donationByID: GET: http://192.168.18.118:3000/v1/guest/donation/:id
 
 donationCount: GET: http://192.168.18.118:3000/v1/donationcount
 
+User Routes:
+
+userByID: GET: http:///192.168.18.118:3000/v1/user/:id
+
+

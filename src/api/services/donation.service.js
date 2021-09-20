@@ -245,12 +245,8 @@ exports.all_guest=async()=>{
 exports.user_id=async(id)=>{
     try{
         await db.authenticate();
-        var result=await models.Donation.findOne({
-            where:{userID:id,isActive:true},
-            include:[{
-                model:models.UserDetails,
-                as:"user"
-            }]
+        var result=await models.Donation.findAll({
+            where:{userID:id,isActive:true}
         })
         if(result==null){return {resposne:false,error:new APIError({
                     message:"NOT FOUND",

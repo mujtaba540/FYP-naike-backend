@@ -7,3 +7,7 @@ sequelize-auto -h 127.0.0.1 -d internship -u root -x 1122 -p 3306  --dialect mys
 
 //postgres
 sequelize-auto -h localhost -d MasterData -u postgres -x root -p 5432  --dialect postgres -c "./src/config/config.js" -o "./src/api/models/database"
+ 
+ // "start": "cross-env NODE_ENV=production pm2 start ./src/index.js",
+
+taskkill /f /im node.exe

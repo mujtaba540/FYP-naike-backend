@@ -10,7 +10,7 @@ const mongoose = require('./config/mongoose');
 
 // listen to requests
 
-app.listen(port||3000, () => logger.info(`server started on port ${port} (${env})`));
+app.listen(process.env.PORT||3000, () => logger.info(`server started on port ${port} (${env})`));
 
 /**
 * Exports express

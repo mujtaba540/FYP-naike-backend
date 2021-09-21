@@ -11,9 +11,9 @@ exports.donation_all = async(req,res,next)=>{
         var result=await donation.all_guest()
         if(result.response){
             res.status(httpStatus.OK).json({
-                code:httpStatus.OK,
-                message:"Success",
-                data:result.data
+                Status:{code:httpStatus.OK,
+                message:"Success"},
+                Data:{data:result.data}
             })
         }else{
           return next(result.error)
@@ -29,9 +29,9 @@ exports.donation_all = async(req,res,next)=>{
       var result=await donation.id_guest(id)
       if(result.response){
           res.status(httpStatus.OK).json({
-              code:httpStatus.OK,
-              message:"Success",
-              data:result.data
+              Status:{code:httpStatus.OK,
+              message:"Success"},
+              Data:{data:result.data}
           })
       }else{
         return next(result.error)
@@ -46,9 +46,9 @@ exports.donation_all = async(req,res,next)=>{
           var result=await donation.count()
           if(result.response){
               res.status(httpStatus.OK).json({
-                  code:httpStatus.OK,
-                  message:"Success",
-                  data:{count:result.data}
+                  Status:{code:httpStatus.OK,
+                  message:"Success"},
+                  Data:{data:{count:result.data}}
               })
           }else{
             return next(result.error)
@@ -62,9 +62,9 @@ exports.need_all = async(req,res,next)=>{
         var result=await need.all_guest()
         if(result.response){
             res.status(httpStatus.OK).json({
-                code:httpStatus.OK,
-                message:"Success",
-                data:result.data
+                Status:{code:httpStatus.OK,
+                message:"Success"},
+                Data:{data:result.data}
             })
         }else{
           return next(result.error)
@@ -80,9 +80,9 @@ exports.need_all = async(req,res,next)=>{
       var result=await need.id_guest(id)
       if(result.response){
           res.status(httpStatus.OK).json({
-              code:httpStatus.OK,
-              message:"Success",
-              data:result.data
+              Status:{code:httpStatus.OK,
+              message:"Success"},
+              Data:{data:result.data}
           })
       }else{
         return next(result.error)
@@ -97,9 +97,9 @@ exports.need_all = async(req,res,next)=>{
           var result=await need.count()
           if(result.response){
               res.status(httpStatus.OK).json({
-                  code:httpStatus.OK,
-                  message:"Success",
-                  data:{count:result.data}
+                  Status:{code:httpStatus.OK,
+                  message:"Success"},
+                  Data:{data:{count:result.data}}
               })
           }else{
             return next(result.error)

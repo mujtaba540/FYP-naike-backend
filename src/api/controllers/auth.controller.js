@@ -29,7 +29,7 @@ exports.register = async (req, res, next) => {
     var result=await authService.register(data)
     if(result.response){
       res.status(httpStatus.CREATED);
-      return res.json({ code:httpStatus.CREATED, message:"User Registered" });
+      return res.json({ Status:{code:httpStatus.CREATED, message:"User Registered" },Data:{}});
     }else{
       return next(result.error)
     }
@@ -47,9 +47,13 @@ exports.login = async (req, res, next) => {
 
     const { user,accessToken } = await authService.findAndGenerateToken(req.body);
     return res.json({ 
-      code:httpStatus.OK,
-      "message":"Success",
-      token:accessToken, data: user
+      Status:{
+        code:httpStatus.OK,
+        "message":"Success",
+      },
+      Data:{
+        token:accessToken, data: user
+      }
      });
   } catch (error) {
     return next(error);

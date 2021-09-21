@@ -16,8 +16,8 @@ exports.create = async (req, res, next) => {
     if(result.response){
         res.status(httpStatus.CREATED);
         res.json({
-            code:httpStatus.OK,
-            "message":"Success"
+            Status:{code:httpStatus.OK,
+            "message":"Success"},Data:{}
         })
     }else{
         return next(result.error)
@@ -41,8 +41,8 @@ exports.update = async (req, res, next) =>{
             if(result.response){
                 res.status(httpStatus.OK);
                 res.json({
-                    "code":"200",
-                    "message":"Success"
+                    Status:{"code":"200",
+                    "message":"Success"},Data:{}
                 })
             }else{
               return next(result.error)
@@ -69,8 +69,8 @@ exports.delete = async (req, res, next) => {
             var result=await subcategory.delete(id,username)
             if(result.response){
                 res.status(httpStatus.OK).json({
-                   code:httpStatus.OK,
-                    message:"subcategory Deleted"
+                   Status:{code:httpStatus.OK,
+                    message:"subcategory Deleted"},Data:{}
                 })
             }else{
               return next(result.error)
@@ -86,9 +86,9 @@ exports.all = async(req,res,next)=>{
       var result=await subcategory.all()
       if(result.response){
           res.status(httpStatus.OK).json({
-              code:httpStatus.OK,
-              message:"Success",
-              data:result.data
+              Status:{code:httpStatus.OK,
+              message:"Success"},
+              Data:{data:result.data}
           })
       }else{
         return next(result.error)
@@ -104,9 +104,9 @@ exports.id=async(req,res,next)=>{
     var result=await subcategory.id(id)
     if(result.response){
         res.status(httpStatus.OK).json({
-            code:httpStatus.OK,
-            message:"Success",
-            data:result.data
+            Status:{code:httpStatus.OK,
+            message:"Success"},
+            Data:{data:result.data}
         })
     }else{
       return next(result.error)
@@ -121,9 +121,9 @@ exports.count = async(req,res,next)=>{
         var result=await subcategory.count()
         if(result.response){
             res.status(httpStatus.OK).json({
-                code:httpStatus.OK,
-                message:"Success",
-                data:{count:result.data}
+                Status:{code:httpStatus.OK,
+                message:"Success"},
+                Data:{data:{count:result.data}}
             })
         }else{
           return next(result.error)
@@ -137,9 +137,9 @@ exports.count = async(req,res,next)=>{
         var result=await subcategory.all_guest()
         if(result.response){
             res.status(httpStatus.OK).json({
-                code:httpStatus.OK,
-                message:"Success",
-                data:result.data
+                Status:{code:httpStatus.OK,
+                message:"Success"},
+                Data:{data:result.data}
             })
         }else{
           return next(result.error)
@@ -155,9 +155,9 @@ exports.count = async(req,res,next)=>{
       var result=await subcategory.id_guest(id)
       if(result.response){
           res.status(httpStatus.OK).json({
-              code:httpStatus.OK,
-              message:"Success",
-              data:result.data
+             Status:{ code:httpStatus.OK,
+              message:"Success"},
+              Data:{data:result.data}
           })
       }else{
         return next(result.error)

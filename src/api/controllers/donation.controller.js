@@ -16,8 +16,11 @@ exports.create = async (req, res, next) => {
     if(result.response){
         res.status(httpStatus.CREATED);
         res.json({
+          Status:{
             code:httpStatus.OK,
             "message":"Success"
+          },Data:{}
+            
         })
     }else{
         return next(result.error)
@@ -41,8 +44,11 @@ exports.update = async (req, res, next) =>{
             if(result.response){
                 res.status(httpStatus.OK);
                 res.json({
+                  Status:{
                     "code":"200",
                     "message":"Success"
+                  },Data:{}
+                    
                 })
             }else{
               return next(result.error)
@@ -69,8 +75,11 @@ exports.delete = async (req, res, next) => {
             var result=await donation.delete(id,username)
             if(result.response){
                 res.status(httpStatus.OK).json({
-                   code:httpStatus.OK,
-                    message:"donation Deleted"
+                  Status:{
+                    code:httpStatus.OK,
+                    message:"Donation Deleted"
+                  },Data:{}
+                   
                 })
             }else{
               return next(result.error)
@@ -86,9 +95,9 @@ exports.all = async(req,res,next)=>{
       var result=await donation.all()
       if(result.response){
           res.status(httpStatus.OK).json({
-              code:httpStatus.OK,
-              message:"Success",
-              data:result.data
+              Status:{code:httpStatus.OK,
+              message:"Success"},
+              Data:{data:result.data}
           })
       }else{
         return next(result.error)
@@ -104,9 +113,9 @@ exports.id=async(req,res,next)=>{
     var result=await donation.id(id)
     if(result.response){
         res.status(httpStatus.OK).json({
-            code:httpStatus.OK,
-            message:"Success",
-            data:result.data
+            Status:{code:httpStatus.OK,
+            message:"Success"},
+            Data:{data:result.data}
         })
     }else{
       return next(result.error)
@@ -121,9 +130,9 @@ exports.count = async(req,res,next)=>{
         var result=await donation.count()
         if(result.response){
             res.status(httpStatus.OK).json({
-                code:httpStatus.OK,
-                message:"Success",
-                data:{count:result.data}
+                Status:{code:httpStatus.OK,
+                message:"Success"},
+                Data:{data:{count:result.data}}
             })
         }else{
           return next(result.error)
@@ -137,9 +146,9 @@ exports.count = async(req,res,next)=>{
         var result=await donation.all_guest()
         if(result.response){
             res.status(httpStatus.OK).json({
-                code:httpStatus.OK,
-                message:"Success",
-                data:result.data
+                Status:{code:httpStatus.OK,
+                message:"Success"},
+                Data:{data:result.data}
             })
         }else{
           return next(result.error)
@@ -155,9 +164,9 @@ exports.count = async(req,res,next)=>{
       var result=await donation.id_guest(id)
       if(result.response){
           res.status(httpStatus.OK).json({
-              code:httpStatus.OK,
-              message:"Success",
-              data:result.data
+              Status:{code:httpStatus.OK,
+              message:"Success"},
+              Data:{data:result.data}
           })
       }else{
         return next(result.error)
@@ -173,9 +182,9 @@ exports.count = async(req,res,next)=>{
       var result=await donation.user_id(id)
       if(result.response){
           res.status(httpStatus.OK).json({
-              code:httpStatus.OK,
-              message:"Success",
-              data:result.data
+              Status:{code:httpStatus.OK,
+              message:"Success"},
+              Data:{data:result.data}
           })
       }else{
         return next(result.error)

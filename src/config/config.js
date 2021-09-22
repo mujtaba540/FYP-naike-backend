@@ -29,12 +29,13 @@ const { Sequelize } = require("sequelize");
 //     },
 // });
 
-//postgres heroku
-module.exports=new Sequelize(process.env.DB_DATABASE,process.env.DB_USER,process.env.DB_PASSWORD,{
-    host:process.env.DB_HOST_HEROKU,
+//heroku DB
+module.exports=new Sequelize(process.env.HEROKU_DB_DATABASE,process.env.HEROKU_DB_USER,process.env.HEROKU_DB_PASSWORD,{
+    host:process.env.HEROKU_DB_HOST,
     dialect:"postgres",
-    port:process.env.DB_PORT,
+    port:process.env.HEROKU_DB_PORT,
     define: {
         timestamps: false
     },
 });
+

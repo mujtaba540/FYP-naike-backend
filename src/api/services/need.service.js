@@ -1,5 +1,5 @@
 var db=require('../../config/config');
-var initModels=require('../models/Database/init-models');
+var initModels=require('../models/database/init-models');
 var models=initModels(db)
 var {Op}=require('sequelize')
 const APIError = require('../errors/api-error');

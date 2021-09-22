@@ -11,3 +11,5 @@ sequelize-auto -h localhost -d MasterData -u postgres -x root -p 5432  --dialect
  // "start": "cross-env NODE_ENV=production pm2 start ./src/index.js",
 
 taskkill /f /im node.exe
+
+//BASE_URL=https://naike.herokuapp.com

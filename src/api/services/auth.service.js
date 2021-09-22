@@ -1,5 +1,5 @@
 var db=require('../../config/config.js');
-var initModels=require('../models/database/init-models');
+var initModels=require('../models/Database/init-models');
 var models=initModels(db)
 const httpStatus = require('http-status');
 const APIError = require('../errors/api-error');

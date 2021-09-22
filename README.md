@@ -1,5 +1,7 @@
 Naik-E Backend APIs
 
+//BASE_URL=https://naike.herokuapp.com
+
 Auth Routes:
 
 POST http://192.168.18.118:3000/v1/auth/login

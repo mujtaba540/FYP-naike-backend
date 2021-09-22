@@ -5,7 +5,7 @@
 -- Dumped from database version 13.3
 -- Dumped by pg_dump version 13.3
 
--- Started on 2021-09-22 16:05:45
+-- Started on 2021-09-22 16:20:45
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -288,7 +288,7 @@ SELECT pg_catalog.setval('"NaikE"."UserDetails_id_seq"', 104, true);
 SELECT pg_catalog.setval('"NaikE"."rolePrevilege_Id_seq"', 8, true);
 
 
--- Completed on 2021-09-22 16:05:46
+-- Completed on 2021-09-22 16:20:46
 
 --
 -- PostgreSQL database dump complete

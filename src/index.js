@@ -4,6 +4,7 @@ const { port, env } = require('./config/vars');
 const logger = require('./config/logger');
 const app = require('./config/express');
 const mongoose = require('./config/mongoose');
+const https=require('https')
 
 // open mongoose connection
 // mongoose.connect();
@@ -11,7 +12,7 @@ const mongoose = require('./config/mongoose');
 // listen to requests
 
 app.listen(process.env.PORT||3000, () => logger.info(`server started on port ${port} (${env})`));
-
+// https.createServer(app).listen(process.env.PORT||3000, () => logger.info(`server started on port ${port} (${env})`))
 /**
 * Exports express
 * @public

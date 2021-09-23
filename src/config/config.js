@@ -34,6 +34,12 @@ module.exports=new Sequelize(process.env.HEROKU_DB_DATABASE,process.env.HEROKU_D
     host:process.env.HEROKU_DB_HOST,
     dialect:"postgres",
     port:process.env.HEROKU_DB_PORT,
+    dialectOptions:{
+        ssl:{
+            require:true,
+            rejectUnauthorized:false
+        },
+    },
     define: {
         timestamps: false
     },

@@ -7,7 +7,11 @@ sequelize-auto -h 127.0.0.1 -d internship -u root -x 1122 -p 3306  --dialect mys
 
 //postgres
 sequelize-auto -h localhost -d MasterData -u postgres -x root -p 5432  --dialect postgres -c "./src/config/config.js" -o "./src/api/models/database"
- 
+
+//heroku postgres
+sequelize-auto -h ec2-44-194-6-121.compute-1.amazonaws.com  -d de8jsh49a800c -u zjmvlcbmugxxhi -x 90e2a0a11f7bb496936fcae7ab7b8dd2189d9fde015854a8bff55d0478546410 -p 5432  --dialect postgres -c "./src/config/config.js" -o "./src/api/models/heroku"
+
+
  // "start": "cross-env NODE_ENV=production pm2 start ./src/index.js",
 
 taskkill /f /im node.exe

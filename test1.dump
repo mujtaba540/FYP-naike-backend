@@ -21,33 +21,33 @@ SET row_security = off;
 --
 -- TOC entry 3112 (class 0 OID 16826)
 -- Dependencies: 206
--- Data for Name: Address; Type: TABLE DATA; Schema: NaikE; Owner: postgres
+-- Data for Name: Address; Type: TABLE DATA; Schema: ; Owner: postgres
 --
 
-COPY "NaikE"."Address" ("addressID", "userID", home, city, region, country) FROM stdin;
+COPY "Address" ("addressID", "userID", home, city, region, country) FROM stdin;
 \.
 
 
 --
 -- TOC entry 3114 (class 0 OID 16842)
 -- Dependencies: 208
--- Data for Name: Categories; Type: TABLE DATA; Schema: NaikE; Owner: postgres
+-- Data for Name: Categories; Type: TABLE DATA; Schema: ; Owner: postgres
 --
 
-COPY "NaikE"."Categories" ("categoryID", name, "isActive", "isDelete", "createdOn", "createdBy", "modifiedOn", "modifiedBy", "deletedOn", "deletedBy") FROM stdin;
-2	bag	t	f	\N	\N	\N	\N	\N	\N
-3	clothes	t	\N	\N	\N	\N	\N	\N	\N
-4	Food	t	f	\N	\N	\N	\N	\N	\N
+COPY "Categories" ("categoryID", name, "isActive", "isDelete", "createdOn", "createdBy", "modifiedOn", "modifiedBy", "deletedOn", "deletedBy") FROM stdin;
+2	bag	t	f	N	N	N	N	N	N
+3	clothes	t	N	N	N	N	N	N	N
+4	Food	t	f	N	N	N	N	N	N
 \.
 
 
 --
 -- TOC entry 3118 (class 0 OID 16943)
 -- Dependencies: 212
--- Data for Name: Donation; Type: TABLE DATA; Schema: NaikE; Owner: postgres
+-- Data for Name: Donation; Type: TABLE DATA; Schema: ; Owner: postgres
 --
 
-COPY "NaikE"."Donation" ("donationID", "userID", "subCategoryID", description, status, "isActive", "isDelete", "createdBy", "createdOn", "modifiedOn", "modifiedBy", "deletedBy", "deletedOn", longitude, latitude, "deliveryType", "initialQuantity", "currentQuantity", title) FROM stdin;
+COPY "Donation" ("donationID", "userID", "subCategoryID", description, status, "isActive", "isDelete", "createdBy", "createdOn", "modifiedOn", "modifiedBy", "deletedBy", "deletedOn", longitude, latitude, "deliveryType", "initialQuantity", "currentQuantity", title) FROM stdin;
 22	94	1	sdsd	active	f	f	demoUser	2021-09-20	2021-09-20	demoUser	demoUser	2021-09-22	74.08618358207704	31.592307898606013	Drop Off	12	12	updated 3
 21	94	3	done	active	f	f	demoUser	2021-09-20	2021-09-22	demoUser	demoUser	2021-09-22	74.38288011426926	31.564655375999326	Pick Up	1	127	done
 20	94	3	ryyujhhc	active	f	f	demoUser	2021-09-20	2021-09-21	demoUser	demoUser	2021-09-22	74.25919856876135	31.463704607421946	Pick Up	12	12	updated3
@@ -55,10 +55,10 @@ COPY "NaikE"."Donation" ("donationID", "userID", "subCategoryID", description, s
 15	94	2	asdsss	active	f	f	demoUser	2021-09-16	2021-09-17	demoUser	demoUser	2021-09-20	74.25033477378847	31.469697524177853	pickup	3	3	demo
 16	94	2	asdsss	active	f	f	demoUser	2021-09-16	2021-09-17	demoUser	demoUser	2021-09-20	74.25033477378847	31.469697524177853	pickup	3	3	demo
 17	94	2	asdsss	active	f	f	demoUser	2021-09-16	2021-09-17	demoUser	demoUser	2021-09-20	74.25033477378847	31.469697524177853	pickup	3	3	demo
-18	94	\N	jgxjgd	active	f	f	demoUser	2021-09-20	\N	\N	demoUser	2021-09-20	74.25919856876135	31.471904176032222	Drop Off	1	1	dyhjj
-19	94	\N	rtfg	active	f	f	demoUser	2021-09-20	\N	\N	demoUser	2021-09-20	74.24083013087511	31.452869025706846	Drop Off	5	5	fgv 
-23	94	1	sdsd	active	f	f	demoUser	2021-09-20	\N	\N	demoUser	2021-09-20	74.09991649223329	31.350970015821456	Pick Up	12	12	ssasa
-26	94	1	dsdsd	active	f	f	demoUser	2021-09-22	\N	\N	demoUser	2021-09-22	74.23204280731503	31.462426482404453	Pick Up	12	12	dsdds
+18	94	N	jgxjgd	active	f	f	demoUser	2021-09-20	N	N	demoUser	2021-09-20	74.25919856876135	31.471904176032222	Drop Off	1	1	dyhjj
+19	94	N	rtfg	active	f	f	demoUser	2021-09-20	N	N	demoUser	2021-09-20	74.24083013087511	31.452869025706846	Drop Off	5	5	fgv 
+23	94	1	sdsd	active	f	f	demoUser	2021-09-20	N	N	demoUser	2021-09-20	74.09991649223329	31.350970015821456	Pick Up	12	12	ssasa
+26	94	1	dsdsd	active	f	f	demoUser	2021-09-22	N	N	demoUser	2021-09-22	74.23204280731503	31.462426482404453	Pick Up	12	12	dsdds
 25	94	2	sdsd	active	f	f	demoUser	2021-09-22	2021-09-22	demoUser	demoUser	2021-09-22	74.27432445121767	31.713938786464876	Pick Up	2	2	dsdds
 \.
 
@@ -66,111 +66,111 @@ COPY "NaikE"."Donation" ("donationID", "userID", "subCategoryID", description, s
 --
 -- TOC entry 3120 (class 0 OID 16974)
 -- Dependencies: 214
--- Data for Name: Need; Type: TABLE DATA; Schema: NaikE; Owner: postgres
+-- Data for Name: Need; Type: TABLE DATA; Schema: ; Owner: postgres
 --
 
-COPY "NaikE"."Need" ("needID", "userID", "subCategoryID", "donationID", description, deadline, status, "needCount", "resolveCount", "isActive", "isDelete", "createdOn", "createdBy", "modifiedOn", "modifiedBy", "deletedOn", "deletedBy", longitude, latitude, "deliveryType", "initialQuantity", "currentQuantity", title) FROM stdin;
-57	94	2	\N	demo description	2021-09-22 00:00:00+05	active	1	0	f	f	2021-09-20	demoUser	\N	\N	2021-09-20	demoUser	74.29078660905361	31.485662212044044	Drop Off	12	12	demo 3 from mobile
-58	94	1	\N	gxhcbkbkhafckbh	2021-09-24 00:00:00+05	active	1	0	f	f	2021-09-20	demoUser	\N	\N	2021-09-20	demoUser	74.25967030227184	31.459696500624315	Drop Off	10	10	demo 3 title 
-49	94	2	\N	asd	1999-01-01 00:00:00+05	active	1	0	f	f	2021-09-16	demoUser	\N	\N	2021-09-17	demoUser	31.471994	74.252223	pickup	3	3	demo
-65	94	3	\N	donee	2021-09-30 00:00:00+05	active	1	0	f	f	2021-09-21	demoUser	2021-09-22	demoUser	2021-09-22	demoUser	74.24213536083698	31.47078408061754	Pick Up and Drop Off	12	12	done
-63	94	1	\N	need	2021-09-15 00:00:00+05	active	1	0	f	f	2021-09-20	demoUser	2021-09-21	demoUser	2021-09-22	demoUser	74.42236223096847	31.578535717965416	Pick Up and Drop Off	6	6	helloooooo
-54	94	2	\N	asd	1999-01-01 00:00:00+05	active	1	0	f	f	2021-09-16	demoUser	\N	\N	2021-09-17	demoUser	74.2884349822998	31.462346760703024	pickup	3	3	demo
-55	94	2	\N	asd	1999-01-01 00:00:00+05	active	1	0	f	f	2021-09-16	demoUser	\N	\N	2021-09-17	demoUser	74.24946761416687	31.468972932724437	pickup	3	3	demo
-56	94	3	\N	updated	2021-09-30 00:00:00+05	active	1	0	f	f	2021-09-20	demoUser	2021-09-22	demoUser	2021-09-22	demoUser	74.3708636239171	31.59763180072519	Pick Up and Drop Off	1	1	hehe
-60	94	1	\N	fh	2021-09-30 00:00:00+05	active	1	0	f	f	2021-09-20	demoUser	\N	\N	2021-09-20	demoUser	74.28117122501135	31.459897553521753	Drop Off	55	55	dyg
-64	94	1	\N	ccv	2021-09-28 00:00:00+05	active	1	0	f	f	2021-09-20	demoUser	\N	\N	2021-09-20	demoUser	74.32376292778017	31.336895537053042	Pick Up	2	2	ssasa
-59	94	1	\N	utzhfz	2021-09-30 00:00:00+05	active	1	0	f	f	2021-09-20	demoUser	2021-09-20	demoUser	2021-09-21	demoUser	74.21525292098522	31.44266263584687	Drop Off	71	71	updated 4
-51	94	2	\N	asd	1999-01-01 00:00:00+05	active	1	0	f	f	2021-09-16	demoUser	2021-09-17	demoUser	2021-09-20	demoUser	74.25265220237733	31.47117812264881	pickup	3	3	demo
-52	94	2	\N	un	2021-09-17 00:00:00+05	active	1	0	f	f	2021-09-16	demoUser	2021-09-17	demoUser	2021-09-20	demoUser	74.25316046272171	31.473454266947055	Pick Up	6	6	un
-53	94	2	\N	asd	1999-01-01 00:00:00+05	active	1	0	f	f	2021-09-16	demoUser	2021-09-17	demoUser	2021-09-20	demoUser	31.471991	74.252221	pickup	3	3	demo
-50	94	2	\N	asd	1999-01-01 00:00:00+05	active	1	0	f	f	2021-09-16	demoUser	2021-09-17	demoUser	2021-09-20	demoUser	74.25033477378847	31.469697524177853	pickup	3	3	demo
-62	94	2	\N	New need test	2021-09-30 00:00:00+05	active	1	0	f	f	2021-09-20	demoUser	2021-09-20	demoUser	2021-09-21	demoUser	74.07657054496767	31.538483148660987	Pick Up	2	2	Hellooo hyy
-61	94	2	\N	asd	2021-09-30 00:00:00+05	active	1	0	f	f	2021-09-20	demoUser	2021-09-20	demoUser	2021-09-21	demoUser	74.24946761416687	31.468972932724437	Pick Up	3	3	demo 2
-66	94	3	\N	sdsdsd	2021-09-07 00:00:00+05	active	1	0	t	f	2021-09-22	demoUser	2021-09-22	demoUser	\N	\N	74.01889232231142	31.55486788264741	Pick Up and Drop Off	12	12	dsddss
-67	94	1	\N	hello\n	2021-09-30 00:00:00+05	active	1	0	f	f	2021-09-22	demoUser	2021-09-22	demoUser	2021-09-22	demoUser	74.36908153129579	31.433212238678117	Pick Up and Drop Off	12	12	dsdds
+COPY "Need" ("needID", "userID", "subCategoryID", "donationID", description, deadline, status, "needCount", "resolveCount", "isActive", "isDelete", "createdOn", "createdBy", "modifiedOn", "modifiedBy", "deletedOn", "deletedBy", longitude, latitude, "deliveryType", "initialQuantity", "currentQuantity", title) FROM stdin;
+57	94	2	N	demo description	2021-09-22 00:00:00+05	active	1	0	f	f	2021-09-20	demoUser	N	N	2021-09-20	demoUser	74.29078660905361	31.485662212044044	Drop Off	12	12	demo 3 from mobile
+58	94	1	N	gxhcbkbkhafckbh	2021-09-24 00:00:00+05	active	1	0	f	f	2021-09-20	demoUser	N	N	2021-09-20	demoUser	74.25967030227184	31.459696500624315	Drop Off	10	10	demo 3 title 
+49	94	2	N	asd	1999-01-01 00:00:00+05	active	1	0	f	f	2021-09-16	demoUser	N	N	2021-09-17	demoUser	31.471994	74.252223	pickup	3	3	demo
+65	94	3	N	donee	2021-09-30 00:00:00+05	active	1	0	f	f	2021-09-21	demoUser	2021-09-22	demoUser	2021-09-22	demoUser	74.24213536083698	31.47078408061754	Pick Up and Drop Off	12	12	done
+63	94	1	N	need	2021-09-15 00:00:00+05	active	1	0	f	f	2021-09-20	demoUser	2021-09-21	demoUser	2021-09-22	demoUser	74.42236223096847	31.578535717965416	Pick Up and Drop Off	6	6	helloooooo
+54	94	2	N	asd	1999-01-01 00:00:00+05	active	1	0	f	f	2021-09-16	demoUser	N	N	2021-09-17	demoUser	74.2884349822998	31.462346760703024	pickup	3	3	demo
+55	94	2	N	asd	1999-01-01 00:00:00+05	active	1	0	f	f	2021-09-16	demoUser	N	N	2021-09-17	demoUser	74.24946761416687	31.468972932724437	pickup	3	3	demo
+56	94	3	N	updated	2021-09-30 00:00:00+05	active	1	0	f	f	2021-09-20	demoUser	2021-09-22	demoUser	2021-09-22	demoUser	74.3708636239171	31.59763180072519	Pick Up and Drop Off	1	1	hehe
+60	94	1	N	fh	2021-09-30 00:00:00+05	active	1	0	f	f	2021-09-20	demoUser	N	N	2021-09-20	demoUser	74.28117122501135	31.459897553521753	Drop Off	55	55	dyg
+64	94	1	N	ccv	2021-09-28 00:00:00+05	active	1	0	f	f	2021-09-20	demoUser	N	N	2021-09-20	demoUser	74.32376292778017	31.336895537053042	Pick Up	2	2	ssasa
+59	94	1	N	utzhfz	2021-09-30 00:00:00+05	active	1	0	f	f	2021-09-20	demoUser	2021-09-20	demoUser	2021-09-21	demoUser	74.21525292098522	31.44266263584687	Drop Off	71	71	updated 4
+51	94	2	N	asd	1999-01-01 00:00:00+05	active	1	0	f	f	2021-09-16	demoUser	2021-09-17	demoUser	2021-09-20	demoUser	74.25265220237733	31.47117812264881	pickup	3	3	demo
+52	94	2	N	un	2021-09-17 00:00:00+05	active	1	0	f	f	2021-09-16	demoUser	2021-09-17	demoUser	2021-09-20	demoUser	74.25316046272171	31.473454266947055	Pick Up	6	6	un
+53	94	2	N	asd	1999-01-01 00:00:00+05	active	1	0	f	f	2021-09-16	demoUser	2021-09-17	demoUser	2021-09-20	demoUser	31.471991	74.252221	pickup	3	3	demo
+50	94	2	N	asd	1999-01-01 00:00:00+05	active	1	0	f	f	2021-09-16	demoUser	2021-09-17	demoUser	2021-09-20	demoUser	74.25033477378847	31.469697524177853	pickup	3	3	demo
+62	94	2	N	New need test	2021-09-30 00:00:00+05	active	1	0	f	f	2021-09-20	demoUser	2021-09-20	demoUser	2021-09-21	demoUser	74.07657054496767	31.538483148660987	Pick Up	2	2	Hellooo hyy
+61	94	2	N	asd	2021-09-30 00:00:00+05	active	1	0	f	f	2021-09-20	demoUser	2021-09-20	demoUser	2021-09-21	demoUser	74.24946761416687	31.468972932724437	Pick Up	3	3	demo 2
+66	94	3	N	sdsdsd	2021-09-07 00:00:00+05	active	1	0	t	f	2021-09-22	demoUser	2021-09-22	demoUser	N	N	74.01889232231142	31.55486788264741	Pick Up and Drop Off	12	12	dsddss
+67	94	1	N	helloN	2021-09-30 00:00:00+05	active	1	0	f	f	2021-09-22	demoUser	2021-09-22	demoUser	2021-09-22	demoUser	74.36908153129579	31.433212238678117	Pick Up and Drop Off	12	12	dsdds
 \.
 
 
 --
 -- TOC entry 3129 (class 0 OID 17077)
 -- Dependencies: 223
--- Data for Name: NeedResolver; Type: TABLE DATA; Schema: NaikE; Owner: postgres
+-- Data for Name: NeedResolver; Type: TABLE DATA; Schema: ; Owner: postgres
 --
 
-COPY "NaikE"."NeedResolver" ("needResolverID", "resolverID", "needID", "currentQuantity", "validationStatus", "cancelationStatus") FROM stdin;
+COPY "NeedResolver" ("needResolverID", "resolverID", "needID", "currentQuantity", "validationStatus", "cancelationStatus") FROM stdin;
 \.
 
 
 --
 -- TOC entry 3122 (class 0 OID 17009)
 -- Dependencies: 216
--- Data for Name: Privilege; Type: TABLE DATA; Schema: NaikE; Owner: postgres
+-- Data for Name: Privilege; Type: TABLE DATA; Schema: ; Owner: postgres
 --
 
-COPY "NaikE"."Privilege" ("privilegeID", "menuName", "isActive", "isDelete", "subMenuName") FROM stdin;
-7	Pofile	t	\N	Profile
-8	Dashboard	t	\N	Needs
-9	Dashboard	t	\N	Donations
-10	Dashboard	t	\N	Resolved
-11	Dashboard	t	\N	Reports
+COPY "Privilege" ("privilegeID", "menuName", "isActive", "isDelete", "subMenuName") FROM stdin;
+7	Pofile	t	N	Profile
+8	Dashboard	t	N	Needs
+9	Dashboard	t	N	Donations
+10	Dashboard	t	N	Resolved
+11	Dashboard	t	N	Reports
 \.
 
 
 --
 -- TOC entry 3127 (class 0 OID 17056)
 -- Dependencies: 221
--- Data for Name: Reports; Type: TABLE DATA; Schema: NaikE; Owner: postgres
+-- Data for Name: Reports; Type: TABLE DATA; Schema: ; Owner: postgres
 --
 
-COPY "NaikE"."Reports" ("reportsID", "needID", "userID", description) FROM stdin;
+COPY "Reports" ("reportsID", "needID", "userID", description) FROM stdin;
 \.
 
 
 --
 -- TOC entry 3108 (class 0 OID 16798)
 -- Dependencies: 202
--- Data for Name: Role; Type: TABLE DATA; Schema: NaikE; Owner: postgres
+-- Data for Name: Role; Type: TABLE DATA; Schema: ; Owner: postgres
 --
 
-COPY "NaikE"."Role" ("roleID", "roleName", "isActive", "isDelete") FROM stdin;
-10	user	t	\N
+COPY "Role" ("roleID", "roleName", "isActive", "isDelete") FROM stdin;
+10	user	t	N
 \.
 
 
 --
 -- TOC entry 3116 (class 0 OID 16853)
 -- Dependencies: 210
--- Data for Name: SubCategories; Type: TABLE DATA; Schema: NaikE; Owner: postgres
+-- Data for Name: SubCategories; Type: TABLE DATA; Schema: ; Owner: postgres
 --
 
-COPY "NaikE"."SubCategories" ("subCategoryID", "categoryID", name, "isActive", "isDelete", unit, "maxLimit", "createdOn", "createdBy", "modifiedOn", "modifiedBy", "deletedOn", "deletedBy") FROM stdin;
-1	2	handbag	t	f	quantity	\N	\N	\N	\N	\N	\N	\N
-2	2	purse	t	f	quantity	10	\N	\N	\N	\N	\N	\N
-3	3	pant	t	f	quantity	10	\N	\N	\N	\N	\N	\N
+COPY "SubCategories" ("subCategoryID", "categoryID", name, "isActive", "isDelete", unit, "maxLimit", "createdOn", "createdBy", "modifiedOn", "modifiedBy", "deletedOn", "deletedBy") FROM stdin;
+1	2	handbag	t	f	quantity	N	N	N	N	N	N	N
+2	2	purse	t	f	quantity	10	N	N	N	N	N	N
+3	3	pant	t	f	quantity	10	N	N	N	N	N	N
 \.
 
 
 --
 -- TOC entry 3110 (class 0 OID 16809)
 -- Dependencies: 204
--- Data for Name: UserDetails; Type: TABLE DATA; Schema: NaikE; Owner: postgres
+-- Data for Name: UserDetails; Type: TABLE DATA; Schema: ; Owner: postgres
 --
 
-COPY "NaikE"."UserDetails" ("userID", "roleID", "firstName", "lastName", email, password, phone, gender, "profileDP", "createdOn", "modifiedOn", "dateOfBirth", "isActive", "isDelete", "emailChecked", "phoneChecked", "createdBy", "modifiedBy", "deletedOn", "deletedBy") FROM stdin;
-94	10	demoUser	\N	a@email.com	$2a$10$muzlUutQMz1tWaytT.MIeePKumpieZA0p4qb5hdugB8VRTB9V4M.a	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-100	10	\N	\N	a1@email.com	$2a$10$/DwUgFx9TwPEiv4OGyr0zOibCi34ChtouQl3c4S1DzpC9PMzyV7A.	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
-104	10	\N	\N	a2@email.com	$2a$10$YE9A2yX4q4tNFz.4a8kfV.9qbt3EkPPAIcwEvQULB9xRA68dXR6v2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N
+COPY "UserDetails" ("userID", "roleID", "firstName", "lastName", email, password, phone, gender, "profileDP", "createdOn", "modifiedOn", "dateOfBirth", "isActive", "isDelete", "emailChecked", "phoneChecked", "createdBy", "modifiedBy", "deletedOn", "deletedBy") FROM stdin;
+94	10	demoUser	N	a@email.com	$2a$10$muzlUutQMz1tWaytT.MIeePKumpieZA0p4qb5hdugB8VRTB9V4M.a	N	N	N	N	N	N	N	N	N	N	N	N	N	N
+100	10	N	N	a1@email.com	$2a$10$/DwUgFx9TwPEiv4OGyr0zOibCi34ChtouQl3c4S1DzpC9PMzyV7A.	N	N	N	N	N	N	N	N	N	N	N	N	N	N
+104	10	N	N	a2@email.com	$2a$10$YE9A2yX4q4tNFz.4a8kfV.9qbt3EkPPAIcwEvQULB9xRA68dXR6v2	N	N	N	N	N	N	N	N	N	N	N	N	N	N
 \.
 
 
 --
 -- TOC entry 3124 (class 0 OID 17020)
 -- Dependencies: 218
--- Data for Name: rolePrevilege; Type: TABLE DATA; Schema: NaikE; Owner: postgres
+-- Data for Name: rolePrevilege; Type: TABLE DATA; Schema: ; Owner: postgres
 --
 
-COPY "NaikE"."rolePrevilege" ("privilegeID", "roleID", "rolePrivilegeID", add, view, edit, "isActive") FROM stdin;
+COPY "rolePrevilege" ("privilegeID", "roleID", "rolePrivilegeID", add, view, edit, "isActive") FROM stdin;
 7	10	4	f	t	t	t
 8	10	5	t	t	t	t
 9	10	6	t	t	t	t
@@ -182,110 +182,110 @@ COPY "NaikE"."rolePrevilege" ("privilegeID", "roleID", "rolePrivilegeID", add, v
 --
 -- TOC entry 3125 (class 0 OID 17036)
 -- Dependencies: 219
--- Data for Name: subCategoryHolder; Type: TABLE DATA; Schema: NaikE; Owner: postgres
+-- Data for Name: subCategoryHolder; Type: TABLE DATA; Schema: ; Owner: postgres
 --
 
-COPY "NaikE"."subCategoryHolder" ("subCategoryID", "needID", "donationID") FROM stdin;
+COPY "subCategoryHolder" ("subCategoryID", "needID", "donationID") FROM stdin;
 \.
 
 
 --
 -- TOC entry 3146 (class 0 OID 0)
 -- Dependencies: 205
--- Name: Address_addressID_seq; Type: SEQUENCE SET; Schema: NaikE; Owner: postgres
+-- Name: Address_addressID_seq; Type: SEQUENCE SET; Schema: ; Owner: postgres
 --
 
-SELECT pg_catalog.setval('"NaikE"."Address_addressID_seq"', 10, true);
+SELECT pg_catalog.setval('"Address_addressID_seq"', 10, true);
 
 
 --
 -- TOC entry 3147 (class 0 OID 0)
 -- Dependencies: 207
--- Name: Categories_categoryID_seq; Type: SEQUENCE SET; Schema: NaikE; Owner: postgres
+-- Name: Categories_categoryID_seq; Type: SEQUENCE SET; Schema: ; Owner: postgres
 --
 
-SELECT pg_catalog.setval('"NaikE"."Categories_categoryID_seq"', 4, true);
+SELECT pg_catalog.setval('"Categories_categoryID_seq"', 4, true);
 
 
 --
 -- TOC entry 3148 (class 0 OID 0)
 -- Dependencies: 211
--- Name: Donation_Id_seq; Type: SEQUENCE SET; Schema: NaikE; Owner: postgres
+-- Name: Donation_Id_seq; Type: SEQUENCE SET; Schema: ; Owner: postgres
 --
 
-SELECT pg_catalog.setval('"NaikE"."Donation_Id_seq"', 26, true);
+SELECT pg_catalog.setval('"Donation_Id_seq"', 26, true);
 
 
 --
 -- TOC entry 3149 (class 0 OID 0)
 -- Dependencies: 222
--- Name: NeedResolver_Id_seq; Type: SEQUENCE SET; Schema: NaikE; Owner: postgres
+-- Name: NeedResolver_Id_seq; Type: SEQUENCE SET; Schema: ; Owner: postgres
 --
 
-SELECT pg_catalog.setval('"NaikE"."NeedResolver_Id_seq"', 1, false);
+SELECT pg_catalog.setval('"NeedResolver_Id_seq"', 1, false);
 
 
 --
 -- TOC entry 3150 (class 0 OID 0)
 -- Dependencies: 213
--- Name: Need_Id_seq; Type: SEQUENCE SET; Schema: NaikE; Owner: postgres
+-- Name: Need_Id_seq; Type: SEQUENCE SET; Schema: ; Owner: postgres
 --
 
-SELECT pg_catalog.setval('"NaikE"."Need_Id_seq"', 67, true);
+SELECT pg_catalog.setval('"Need_Id_seq"', 67, true);
 
 
 --
 -- TOC entry 3151 (class 0 OID 0)
 -- Dependencies: 215
--- Name: Privilege_Id_seq; Type: SEQUENCE SET; Schema: NaikE; Owner: postgres
+-- Name: Privilege_Id_seq; Type: SEQUENCE SET; Schema: ; Owner: postgres
 --
 
-SELECT pg_catalog.setval('"NaikE"."Privilege_Id_seq"', 11, true);
+SELECT pg_catalog.setval('"Privilege_Id_seq"', 11, true);
 
 
 --
 -- TOC entry 3152 (class 0 OID 0)
 -- Dependencies: 220
--- Name: Reports_Id_seq; Type: SEQUENCE SET; Schema: NaikE; Owner: postgres
+-- Name: Reports_Id_seq; Type: SEQUENCE SET; Schema: ; Owner: postgres
 --
 
-SELECT pg_catalog.setval('"NaikE"."Reports_Id_seq"', 1, false);
+SELECT pg_catalog.setval('"Reports_Id_seq"', 1, false);
 
 
 --
 -- TOC entry 3153 (class 0 OID 0)
 -- Dependencies: 201
--- Name: Roles_roleID_seq; Type: SEQUENCE SET; Schema: NaikE; Owner: postgres
+-- Name: Roles_roleID_seq; Type: SEQUENCE SET; Schema: ; Owner: postgres
 --
 
-SELECT pg_catalog.setval('"NaikE"."Roles_roleID_seq"', 10, true);
+SELECT pg_catalog.setval('"Roles_roleID_seq"', 10, true);
 
 
 --
 -- TOC entry 3154 (class 0 OID 0)
 -- Dependencies: 209
--- Name: SubCategories_subID_seq; Type: SEQUENCE SET; Schema: NaikE; Owner: postgres
+-- Name: SubCategories_subID_seq; Type: SEQUENCE SET; Schema: ; Owner: postgres
 --
 
-SELECT pg_catalog.setval('"NaikE"."SubCategories_subID_seq"', 3, true);
+SELECT pg_catalog.setval('"SubCategories_subID_seq"', 3, true);
 
 
 --
 -- TOC entry 3155 (class 0 OID 0)
 -- Dependencies: 203
--- Name: UserDetails_id_seq; Type: SEQUENCE SET; Schema: NaikE; Owner: postgres
+-- Name: UserDetails_id_seq; Type: SEQUENCE SET; Schema: ; Owner: postgres
 --
 
-SELECT pg_catalog.setval('"NaikE"."UserDetails_id_seq"', 104, true);
+SELECT pg_catalog.setval('"UserDetails_id_seq"', 104, true);
 
 
 --
 -- TOC entry 3156 (class 0 OID 0)
 -- Dependencies: 217
--- Name: rolePrevilege_Id_seq; Type: SEQUENCE SET; Schema: NaikE; Owner: postgres
+-- Name: rolePrevilege_Id_seq; Type: SEQUENCE SET; Schema: ; Owner: postgres
 --
 
-SELECT pg_catalog.setval('"NaikE"."rolePrevilege_Id_seq"', 8, true);
+SELECT pg_catalog.setval('"rolePrevilege_Id_seq"', 8, true);
 
 
 -- Completed on 2021-09-22 16:20:46

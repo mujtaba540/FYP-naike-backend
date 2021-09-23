@@ -79,7 +79,7 @@ module.exports={
     async register(data){
       try{
         await db.authenticate();
-        data.roleID=10
+        data.roleID=1
         data.password=await bcrypt.hash(data.password,round)
         await models.UserDetails.create(data)
         return {

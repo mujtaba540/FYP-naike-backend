@@ -69,6 +69,8 @@ module.exports={
             ]
         })
         var accessToken=await token(user.role.roleName,user.email)
+        // var temp=await bcrypt.decodeBase64(user.password)
+        // console.log(temp)
         return { user, accessToken: accessToken };
       }
       err.message = 'Incorrect email or password';

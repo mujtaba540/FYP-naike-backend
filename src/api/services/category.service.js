@@ -76,24 +76,14 @@ exports.create = async (Data) => {
  exports.update=async(Data)=>{
     try{
         await db.authenticate();
-        var result=await models.Need.findOne({where:{needID:Data.needID}})
+        var result=await models.Categories.findOne({where:{categoryID:Data.categoryID}})
         if(result==null){
             return {resposne:false,error:new APIError({
                 message:"NOT FOUND",
                 status:httpStatus.NOT_FOUND
             })}
         }else{
-               var newInitialQuantity=Data.initialQuantity
-               var oldCurrent=await models.Need.findOne({where:{needID:Data.needID}})
-               var oldInitialQuantity=await models.Need.findOne({where:{needID:Data.needID}})
-               if(newInitialQuantity>oldInitialQuantity.initialQuantity){
-                   var difference=newInitialQuantity-oldInitialQuantity.initialQuantity
-                   Data.currentQuantity=parseInt(oldCurrent.currentQuantity)+difference
-               }else{
-                   if(newInitialQuantity<=oldCurrent.currentQuantity){
-                       Data.currentQuantity=newInitialQuantity
-                   }
-               }
+              
                Data.initialQuantity=newInitialQuantity
                var username=await models.UserDetails.findByPk(Data.userID,{attributes:["firstName"]})
                var obj=await modifiedDetails(username,Data)    

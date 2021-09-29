@@ -155,6 +155,16 @@ exports.id=async(id)=>{
             include:[{
                 model:models.UserDetails,
                 as:"user"
+            },
+            {
+                model:models.SubCategories,
+                as:"subCategory",
+                attributes:["subCategoryID","name"],
+                include:[{
+                    model:models.Categories,
+                    as:"category",
+                    attributes:["categoryID","name"]
+                }]
             }]
         })
         if(result==null){return {resposne:false,error:new APIError({
@@ -176,6 +186,16 @@ exports.all=async()=>{
         var result=await models.Donation.findAll({where:{isActive:true},include:[{
             model:models.UserDetails,
             as:"user"
+        },
+      {
+            model:models.SubCategories,
+            as:"subCategory",
+            attributes:["subCategoryID","name"],
+            include:[{
+                model:models.Categories,
+                as:"category",
+                attributes:["categoryID","name"]
+            }]
         }]})
         if(result!==null){
             return {
@@ -211,7 +231,17 @@ exports.id_guest=async(id)=>{
     try{
         await db.authenticate();
         var result=await models.Donation.findOne({
-            where:{donationID:id,isActive:true}
+            where:{donationID:id,isActive:true},
+            include:[{
+                model:models.SubCategories,
+                as:"subCategory",
+                attributes:["subCategoryID","name"],
+                include:[{
+                    model:models.Categories,
+                    as:"category",
+                    attributes:["categoryID","name"]
+                }]
+            }]
         })
         if(result==null){return {resposne:false,error:new APIError({
                     message:"NOT FOUND",
@@ -229,7 +259,17 @@ exports.id_guest=async(id)=>{
 exports.all_guest=async()=>{
     try{
         await db.authenticate();
-        var result=await models.Donation.findAll({where:{isActive:true}})
+        var result=await models.Donation.findAll({where:{isActive:true},
+            include:[{
+                model:models.SubCategories,
+                as:"subCategory",
+                attributes:["subCategoryID","name"],
+                include:[{
+                    model:models.Categories,
+                    as:"category",
+                    attributes:["categoryID","name"]
+                }]
+            }]})
         if(result!==null){
             return {
                 response:true,

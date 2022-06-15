@@ -1,9 +1,7 @@
 const httpStatus = require('http-status');
 const need = require('../services/need.service');
 const APIError = require('../errors/api-error');
-
-
-
+// NeedEth=require('../models/etherium/need.ethmodel')
 
 exports.create = async (req, res, next) => {
   try {
@@ -13,6 +11,7 @@ exports.create = async (req, res, next) => {
       message:"BAD REQUEST"
     }))
     var result=await need.create(Data);
+    // await NeedEth.save(Data)
     if(result.response){
         res.status(httpStatus.CREATED);
         res.json({
@@ -89,7 +88,8 @@ exports.all = async(req,res,next)=>{
           res.status(httpStatus.OK).json({
               Status:{code:httpStatus.OK,
               message:"Success"},
-              Data:{data:result.data}
+              Data:{data:result.data,
+              blk:result.eth}
           })
       }else{
         return next(result.error)

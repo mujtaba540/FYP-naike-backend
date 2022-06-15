@@ -1,8 +1,8 @@
 const express = require('express');
 const validate = require('express-validation');
 const controller = require('../../controllers/category.controller');
-const multer=require('../../middlewares/multer.middleware')
-const { authorize,authenticate, ADMIN, LOGGED_USER } = require('../../middlewares/auth');
+const multer = require('../../middlewares/multer.middleware')
+const { authorize, authenticate, ADMIN, LOGGED_USER } = require('../../middlewares/auth');
 const {
   listUsers,
   createUser,
@@ -15,13 +15,19 @@ const router = express.Router();
 
 router
   .route('/count')
-    .get(authenticate(),controller.count)
+  .get(authenticate(), controller.count)
 
 router
   .route('/')
-    .get(controller.all)
+  .get(controller.all)
   // .post(authorize(ADMIN), validate(createUser), controller.emp_create);
-  .post(authenticate(),validate(createDonation),controller.create);
+  // .post(authenticate(),validate(createDonation),controller.create);
+  .post(controller.create);
+
+
+router
+  .route('/blockchain')
+  .get(controller.findBlkAll)
 
 // router
 //   .route('/profile')
@@ -30,10 +36,10 @@ router
 router
   .route('/:id')
 
-   .get( controller.id)
-//   .put(authorize(LOGGED_USER), validate(replaceUser), controller.replace)
+  .get(controller.id)
+  //   .put(authorize(LOGGED_USER), validate(replaceUser), controller.replace)
 
-  .put(authenticate(),controller.update)
+  .put(authenticate(), controller.update)
   .patch(authenticate(), controller.delete);
 
 

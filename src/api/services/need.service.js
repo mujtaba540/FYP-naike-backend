@@ -4,6 +4,9 @@ var models=initModels(db)
 var {Op}=require('sequelize')
 const APIError = require('../errors/api-error');
 const httpStatus = require('http-status');
+// const NeedEth=require("../models/etherium/need.ethmodel")
+// const NeedEthCon=require("../models/etherium/contracts/NeedContract")
+
 
 
 async function createDetails(name,Data){
@@ -83,10 +86,12 @@ exports.create = async (Data) => {
         // }
         var obj=await createDetails(username.firstName,Data)
         await models.Need.create(obj)
+        
         return {
             response:true
         }
     } catch (error) {
+        console.log(error)
         return {
             response:false,
             error:new APIError(httpStatus.INTERNAL_SERVER_ERROR)
@@ -206,10 +211,14 @@ exports.all=async()=>{
             }]
         }
     ]})
+
+    var blkData=await NeedEth.find()
+    
         if(result!==null){
             return {
                 response:true,
-                data:result
+                data:result,
+                eth:blkData
             }    
         }else{
             return {resposne:false,error:new APIError(httpStatus.NOT_FOUND)}

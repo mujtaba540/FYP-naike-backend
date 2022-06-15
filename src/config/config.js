@@ -20,28 +20,34 @@ const { Sequelize } = require("sequelize");
 // });
 
 //postgres DB local
-// module.exports=new Sequelize(process.env.DB_DATABASE,process.env.DB_USER,process.env.DB_PASSWORD,{
-//     host:process.env.DB_HOST,
-//     dialect:"postgres",
-//     port:process.env.DB_PORT,
-//     define: {
-//         timestamps: false
-//     },
-// });
-
-//heroku DB
-module.exports=new Sequelize(process.env.HEROKU_DB_DATABASE,process.env.HEROKU_DB_USER,process.env.HEROKU_DB_PASSWORD,{
-    host:process.env.HEROKU_DB_HOST,
+module.exports=new Sequelize(process.env.DB_DATABASE,process.env.DB_USER,process.env.DB_PASSWORD,{
+    host:process.env.DB_HOST,
     dialect:"postgres",
-    port:process.env.HEROKU_DB_PORT,
+    port:process.env.DB_PORT,
     dialectOptions:{
-        ssl:{
-            require:true,
-            rejectUnauthorized:false
-        },
-    },
+                ssl:{
+                    require:true,
+                    rejectUnauthorized:false
+                },
+            },
     define: {
         timestamps: false
     },
 });
+
+//heroku DB
+// module.exports=new Sequelize(process.env.HEROKU_DB_DATABASE,process.env.HEROKU_DB_USER,process.env.HEROKU_DB_PASSWORD,{
+//     host:process.env.HEROKU_DB_HOST,
+//     dialect:"postgres",
+//     port:process.env.HEROKU_DB_PORT,
+//     dialectOptions:{
+//         ssl:{
+//             require:true,
+//             rejectUnauthorized:false
+//         },
+//     },
+//     define: {
+//         timestamps: false
+//     },
+// });
 
